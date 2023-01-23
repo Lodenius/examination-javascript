@@ -14,6 +14,7 @@ let gameOver = document.getElementsByClassName('game-over');
 let hangman = document.getElementsByClassName('man');
 let noMatch = document.getElementsByClassName('nomatch');
 let word = document.getElementsByClassName('word');
+
 let randomWord = ['frontend', 'candle', 'maja', 'computer'];
 
 
@@ -25,3 +26,6 @@ let randomWord = ['frontend', 'candle', 'maja', 'computer'];
  't', 'u', 'v', 'w', 'x', 'y', 'z'];
  
 
+ // alfabetet
+
+ for (const i = 0; i < alphabet.length; i++);
