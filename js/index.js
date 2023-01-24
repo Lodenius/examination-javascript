@@ -1,14 +1,8 @@
-//  document.querySelector('figure').classList.add('scaffold')
-//  document.querySelector('figure').classList.add('head')
-//  document.querySelector('figure').classList.add('body')
-//  document.querySelector('figure').classList.add('arms')
-//  document.querySelector('figure').classList.add('legs')
-
 let countries = [
   "afghanistan",
   "bangladesh",
   "cambodia",
-  "dominican republic",
+  "denmark",
   "estonia",
   "finland",
   "guatemala",
@@ -46,7 +40,7 @@ function handleGuess(chosenLetter) {
   guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
   document.getElementById(chosenLetter).setAttribute('disabled', true);
 
-  if(answer.indexOf(chosenLetter) >= 0) {
+  if (answer.indexOf(chosenLetter) >= 0) {
     guessedWord();
     checkIfGameWon();
   } else if (answer.indexOf(chosenLetter) === -1) {
@@ -58,19 +52,30 @@ function handleGuess(chosenLetter) {
 }
 
 function updateHangmanPicture() {
-  // document.getElementById('hangmanPic').src = './images' + mistakes + '.jpg';
+  if (mistakes == 1) {
+    document.querySelector('figure').classList.add('scaffold')
+  } else if (mistakes == 2) {
+    document.querySelector('figure').classList.add('head')
+  } else if (mistakes == 3) {
+    document.querySelector('figure').classList.add('body')
+  } else if (mistakes == 4) {
+    document.querySelector('figure').classList.add('arms')
+  } else if (mistakes == 5) {
+    document.querySelector('figure').classList.add('legs')
+  }
 }
+
 
 function checkIfGameWon() {
   if (wordStatus === answer) {
-    document.getElementById('keyboard').innerHTML = 'You won';
+    document.getElementById('keyboard').innerHTML = 'You Won!!!';
   }
 }
 
 function checkIfGameLost() {
   if (mistakes === maxWrong) {
-    document.getElementById('wordSpotlight').innerHTML = 'the answer was: ' + answer;
-    document.getElementById('keyboard').innerHTML = 'You lost';
+    document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
+    document.getElementById('keyboard').innerHTML = 'You Lost!!!';
   }
 }
 
@@ -84,22 +89,18 @@ function updateMistakes() {
   document.getElementById('mistakes').innerHTML = mistakes;
 }
 
-
 function reset() {
-  mistakes - 0;
-  guessed = []
-  document.getElementsById('scaffold');
+  mistakes = 0;
+  guessed = [];
 
-randomWord();
-guessedWord();
-updateMistakes();
-generateButtons();
+  randomWord();
+  guessedWord();
+  updateMistakes();
+  generateButtons();
 }
 
 document.getElementById('maxWrong').innerHTML = maxWrong;
 
-
-
 randomWord();
 generateButtons();
 guessedWord();
@@ -108,18 +109,24 @@ guessedWord();
 
 
 
+// // Game over
 
 
 
 
 
+// // Win
 
 
 
 
 
+// // Reset - Game over
 
 
+
+
+// // Reset - Win
 
 
 
@@ -171,7 +178,7 @@ guessedWord();
 
 
 
-// // Create the alfabetet
+// // Create the alphabet
 
 
 // for (const i = 0; i < alphabet.length; i++);
@@ -202,24 +209,6 @@ guessedWord();
 
 
 
-// // Game over
-
-
-
-
-
-// // Win
-
-
-
-
-
-// // Reset - Game over
-
-
-
-
-// // Reset - Win
 
 
 
