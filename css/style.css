@@ -1,11 +1,26 @@
 body {
     margin: 0;
     height: 100vh;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    font-family: 'PT Sans', sans-serif;
+    background: #eee;
+}
+
+header {
+    text-align: center;
+}
+
+p {
+    margin: 0;
+}
+
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'PT Sans', sans-serif;
-    background: #eee;
 }
 
 main {
