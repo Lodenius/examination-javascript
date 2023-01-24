@@ -4,21 +4,17 @@
 //  document.querySelector('figure').classList.add('arms')
 //  document.querySelector('figure').classList.add('legs')
 
-var programming_languages = [
-	"python",
-	"javascript",
-	"mongodb",
-	"json",
-	"java",
-	"html",
-	"css",
-	"c",
-	"csharp",
-	"golang",
-	"kotlin",
-	"php",
-	"sql",
-	"ruby"
+let countries = [
+  "afghanistan",
+  "bangladesh",
+  "cambodia",
+  "dominican republic",
+  "estonia",
+  "finland",
+  "guatemala",
+  "hungary",
+  "indonesia",
+  "jamaica"
 ]
 
 let answer = '';
@@ -28,7 +24,7 @@ let guessed = [];
 let wordStatus = null;
 
 function randomWord() {
-  answer = programming_languages[Math.floor(Math.random() * programming_languages.length)];
+  answer = countries[Math.floor(Math.random() * countries.length)];
 }
 
 function generateButtons() {
