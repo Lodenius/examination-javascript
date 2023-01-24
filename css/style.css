@@ -13,9 +13,7 @@ header {
     text-align: center;
 }
 
-p {
-    margin: 0;
-}
+
 
 .main {
     display: flex;
@@ -75,7 +73,7 @@ footer ul.word {
     padding: 1rem 0;
 }
 
-footer ul.word li {
+/* footer ul.word li {
     width: 2rem;
     height: 2rem;
     display: flex;
@@ -85,7 +83,7 @@ footer ul.word li {
     border-bottom: 2px solid #222;
     margin: 0 .25rem;
     background: rgba(0,0,0,.1);
-}
+} */
 
 p {
     color: rgba(0,0,0,.4);
@@ -134,4 +132,16 @@ section.game-over.show {
 
 .game-over > a:hover {
     opacity: 1;
+}
+
+#keyboard {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    padding: .5rem .25rem;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #222;
+    margin: 0 .25rem;
+    background: rgba(166, 119, 119, 0.1);
 }
