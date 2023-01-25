@@ -9,7 +9,7 @@ let countries = [
   "hungary",
   "indonesia",
   "jamaica"
-];
+]
 let answer = '';
 let maxWrong = 5;
 let mistakes = 0;
@@ -17,12 +17,12 @@ let guessed = [];
 let wordStatus = null;
 let score = 0;
 
-// Slumpar länder från listan ovan
+// Slumpa länder från listan ovan
 function randomWord() {
   answer = countries[Math.floor(Math.random() * countries.length)];
 };
 
-// Lägger till alfabetet
+// Lägg till alfabetet
 function generateButtons() {
   let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
     `<button
@@ -34,7 +34,7 @@ function generateButtons() {
   document.getElementById('keyboard').innerHTML = buttonsHTML;
 };
 
-// Får spelet att fungera
+// Få spelet att fungera
 function handleGuess(chosenLetter) {
   guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
   document.getElementById(chosenLetter).setAttribute('disabled', true);
@@ -49,11 +49,7 @@ function handleGuess(chosenLetter) {
  }
 };
 
-function updateMistakes() {
-  document.getElementById('mistakes').innerHTML = mistakes;
-};
-
-// Adderar kroppsdel vid fel svar
+// Addera kroppsdel vid fel svar
 function updateHangmanPicture() {
   if (mistakes == 1) {
     document.querySelector('figure').classList.add('scaffold')
@@ -66,13 +62,6 @@ function updateHangmanPicture() {
   } else if (mistakes == 5) {
     document.querySelector('figure').classList.add('legs')
   }
-};
-
-// Markerar använd bokstav med grå
-// om rätt - lägger till i ordet
-function guessedWord() {
-  wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
-  document.getElementById('wordSpotlight').innerHTML = wordStatus;
 };
 
 // Om vinst
@@ -91,10 +80,26 @@ function checkIfGameLost() {
   }
 };
 
+// Markera använd bokstav med grå
+// om rätt - lägg till i ordet
+function guessedWord() {
+  wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
+  document.getElementById('wordSpotlight').innerHTML = wordStatus;
+};
+
+function updateMistakes() {
+  document.getElementById('mistakes').innerHTML = mistakes;
+}
+
 // Starta om spel
 function reset() {
   mistakes = 0;
   guessed = [];
+  document.querySelector('figure').classList.remove('scaffold')
+  document.querySelector('figure').classList.remove('head')
+  document.querySelector('figure').classList.remove('body')
+  document.querySelector('figure').classList.remove('arms')
+  document.querySelector('figure').classList.remove('legs')
   randomWord();
   guessedWord();
   updateMistakes();
@@ -102,6 +107,7 @@ function reset() {
 };
 
 document.getElementById('maxWrong').innerHTML = maxWrong;
+
 randomWord();
 generateButtons();
 guessedWord();
