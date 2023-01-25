@@ -9,37 +9,35 @@ let countries = [
   "hungary",
   "indonesia",
   "jamaica"
-]
-
+];
 let answer = '';
 let maxWrong = 5;
 let mistakes = 0;
 let guessed = [];
 let wordStatus = null;
+let score = 0;
 
+// Slumpar länder från listan ovan
 function randomWord() {
   answer = countries[Math.floor(Math.random() * countries.length)];
-}
+};
 
+// Lägger till alfabetet
 function generateButtons() {
   let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
-    `
-      <button
-        class="btn btn-lg btn-primary m-2"
-        id='` + letter + `'
-        onClick="handleGuess('` + letter + `')"
-      >
+    `<button
+        class="btn" id='` + letter + `'
+        onClick="handleGuess('` + letter + `')">
         ` + letter + `
-      </button>
-    `).join('');
-
+    </button>`
+  ).join('');
   document.getElementById('keyboard').innerHTML = buttonsHTML;
-}
+};
 
+// Får spelet att fungera
 function handleGuess(chosenLetter) {
   guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
   document.getElementById(chosenLetter).setAttribute('disabled', true);
-
   if (answer.indexOf(chosenLetter) >= 0) {
     guessedWord();
     checkIfGameWon();
@@ -48,9 +46,14 @@ function handleGuess(chosenLetter) {
     updateMistakes();
     checkIfGameLost();
     updateHangmanPicture();
-  }
-}
+ }
+};
 
+function updateMistakes() {
+  document.getElementById('mistakes').innerHTML = mistakes;
+};
+
+// Adderar kroppsdel vid fel svar
 function updateHangmanPicture() {
   if (mistakes == 1) {
     document.querySelector('figure').classList.add('scaffold')
@@ -63,152 +66,42 @@ function updateHangmanPicture() {
   } else if (mistakes == 5) {
     document.querySelector('figure').classList.add('legs')
   }
-}
+};
 
+// Markerar använd bokstav med grå
+// om rätt - lägger till i ordet
+function guessedWord() {
+  wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
+  document.getElementById('wordSpotlight').innerHTML = wordStatus;
+};
 
+// Om vinst
 function checkIfGameWon() {
   if (wordStatus === answer) {
-    document.getElementById('keyboard').innerHTML = 'You Won!!!';
+    document.getElementById('keyboard').innerHTML = 'Yay! You won!';
+    document.getElementById('score').innerHTML = score += 1;
   }
-}
+};
 
+// Om game over
 function checkIfGameLost() {
   if (mistakes === maxWrong) {
     document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
-    document.getElementById('keyboard').innerHTML = 'You Lost!!!';
+    document.getElementById('keyboard').innerHTML = 'Oh no! You lost!';
   }
-}
+};
 
-function guessedWord() {
-  wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
-
-  document.getElementById('wordSpotlight').innerHTML = wordStatus;
-}
-
-function updateMistakes() {
-  document.getElementById('mistakes').innerHTML = mistakes;
-}
-
+// Starta om spel
 function reset() {
   mistakes = 0;
   guessed = [];
-
   randomWord();
   guessedWord();
   updateMistakes();
   generateButtons();
-}
+};
 
 document.getElementById('maxWrong').innerHTML = maxWrong;
-
 randomWord();
 generateButtons();
 guessedWord();
-
-
-
-
-
-// // Game over
-
-
-
-
-
-// // Win
-
-
-
-
-
-// // Reset - Game over
-
-
-
-
-// // Reset - Win
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// /**
-//  För att toggla SVG:en
-//  document.querySelector('figure').classList.add('scaffold')
-//  document.querySelector('figure').classList.add('head')
-//  document.querySelector('figure').classList.add('body')
-//  document.querySelector('figure').classList.add('arms')
-//  document.querySelector('figure').classList.add('legs')
-
-//  */
-
-// // const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
-// // 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-// // 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-
-
-// let answer = '';
-// // let maxWrong = 5;
-// let guessed = [];
-
-
-
-
-// // Get elements
-
-// let gameOver = document.getElementsByClassName('game-over');
-// let hangman = document.getElementsByClassName('man');
-// let noMatch = document.getElementsByClassName('nomatch');
-// let word = document.getElementsByClassName('word');
-
-
-
-
-
- 
-
-
-
-// // Create the alphabet
-
-
-// for (const i = 0; i < alphabet.length; i++);
-
-
-
-
-// // Word
-
-// let programmingWords = ['frontend', 'developer', 'python', 'computer', 'jhgksdhjfglkh'];
-//  function randomWord() {
-//     answer = programmingWords[Math.floor(Math.random() * programming.length)];
-//  }
-//  randomWord();
- 
-
-
-// // Hangman
-
-
-
-
-
-
-// // Play
-
-
-
-
-
-
-
-
