@@ -95,11 +95,7 @@ function updateMistakes() {
 function reset() {
   mistakes = 0;
   guessed = [];
-  document.querySelector('figure').classList.remove('scaffold')
-  document.querySelector('figure').classList.remove('head')
-  document.querySelector('figure').classList.remove('body')
-  document.querySelector('figure').classList.remove('arms')
-  document.querySelector('figure').classList.remove('legs')
+  document.querySelector('figure').className = ""
   randomWord();
   guessedWord();
   updateMistakes();
@@ -107,7 +103,6 @@ function reset() {
 };
 
 document.getElementById('maxWrong').innerHTML = maxWrong;
-
-randomWord();
-generateButtons();
-guessedWord();
+  randomWord();
+  generateButtons();
+  guessedWord();
